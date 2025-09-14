@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="nl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solanya Festival</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(#1a1a2e, #16213e);
+            color: #e0eaf4;
+            overflow-x: hidden;
+        }
+
+        /* Achtergrond sterren en zwevende lichten */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 3s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.5); }
+        }
+
+        .magic-glow {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, #ff4e50, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-50px) translateX(20px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navigatiebalk -->
+    <header class="bg-[#1f2833] text-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold rounded-lg px-2 py-1 transition-colors duration-300">Solanya</a>
+            <div class="md:hidden">
+                <button id="menu-button" class="text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <ul id="menu" class="hidden md:flex space-x-6">
+                <li><a href="#home" class="font-semibold text-lg hover:text-[#66fcf1] transition duration-300">Home</a></li>
+                <li><a href="#lineup" class="font-semibold text-lg hover:text-[#66fcf1] transition duration-300">Line-up</a></li>
+                <li><a href="#tickets" class="font-semibold text-lg hover:text-[#66fcf1] transition duration-300">Tickets</a></li>
+                <li><a href="#info" class="font-semibold text-lg hover:text-[#66fcf1] transition duration-300">Festival Info</a></li>
+                <li><a href="#faq" class="font-semibold text-lg hover:text-[#66fcf1] transition duration-300">FAQ</a></li>
+                <li><a href="#sponsors" class="font-semibold text-lg hover:text-[#66fcf1] transition duration-300">Sponsors</a></li>
+                <li><a href="#contact" class="font-semibold text-lg hover:text-[#66fcf1] transition duration-300">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0b0c10] text-white">
+            <ul class="flex flex-col items-center py-4 space-y-4">
+                <li><a href="#home" class="block py-2 w-full text-center hover:bg-[#1f2833]">Home</a></li>
+                <li><a href="#lineup" class="block py-2 w-full text-center hover:bg-[#1f2833]">Line-up</a></li>
+                <li><a href="#tickets" class="block py-2 w-full text-center hover:bg-[#1f2833]">Tickets</a></li>
+                <li><a href="#info" class="block py-2 w-full text-center hover:bg-[#1f2833]">Festival Info</a></li>
+                <li><a href="#faq" class="block py-2 w-full text-center hover:bg-[#1f2833]">FAQ</a></li>
+                <li><a href="#sponsors" class="block py-2 w-full text-center hover:bg-[#1f2833]">Sponsors</a></li>
+                <li><a href="#contact" class="block py-2 w-full text-center hover:bg-[#1f2833]">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Home Sectie -->
+        <section id="home" class="py-20 px-6 text-center">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff4e50] to-[#f9d423] mb-4 drop-shadow-lg">Solanya Festival</h1>
+            <p class="text-xl sm:text-2xl text-white opacity-80 mb-4">
+                Het magische elektronische muziekfestival aan het strand van Oostende
+            </p>
+            <div id="countdown" class="text-3xl sm:text-4xl md:text-5xl font-bold my-8 text-[#66fcf1] drop-shadow-xl">Loading countdown...</div>
+            <p class="text-lg text-white opacity-60 mb-8">Datum eerste editie: 22-23 juli 2028</p>
+            <a href="#tickets" class="inline-block bg-[#ff4e50] text-white font-bold py-4 px-12 rounded-full shadow-lg hover:bg-[#f9d423] transition duration-300 transform hover:scale-105">
+                Reserveer je ticket
+            </a>
+        </section>
+
+        <!-- Line-up Sectie -->
+        <section id="lineup" class="py-20 px-6 text-center bg-[#1f2833] shadow-inner">
+            <h2 class="text-4xl font-bold text-[#66fcf1] mb-8">Onze Line-up</h2>
+            <p class="italic text-white opacity-70">
+                De line-up is voorlopig nog niet beschikbaar… houd de magie in de gaten!
+            </p>
+        </section>
+
+        <!-- Tickets Sectie -->
+        <section id="tickets" class="py-20 px-6 text-center">
+            <h2 class="text-4xl font-bold text-white mb-8">Reserveer je ticket</h2>
+            <p class="mb-8 text-white opacity-70">Voorlopig kun je tickets reserveren. Vanaf volgend jaar zal de betalingsfunctie beschikbaar zijn!</p>
+            <div class="tickets-container flex flex-wrap justify-center gap-8">
+                <div class="ticket bg-[#1f2833] p-8 rounded-2xl shadow-xl transform hover:scale-105 transition duration-300 border-2 border-[#f9d423]">
+                    <h3 class="text-2xl font-bold text-[#f9d423] mb-4">Dagticket</h3>
+                    <p class="text-lg font-semibold mb-2">Prijs: €50</p>
+                    <ul class="text-left text-sm space-y-2">
+                        <li>✅ Toegang tot het festival van 12:00 - 02:00</li>
+                        <li>❌ Geen camping inbegrepen</li>
+                        <li>❌ Geen VIP-toegang</li>
+                    </ul>
+                </div>
+                <div class="ticket bg-[#1f2833] p-8 rounded-2xl shadow-xl transform hover:scale-105 transition duration-300 border-2 border-[#ff4e50]">
+                    <h3 class="text-2xl font-bold text-[#ff4e50] mb-4">Weekendpass</h3>
+                    <p class="text-lg font-semibold mb-2">Prijs: €120</p>
+                    <ul class="text-left text-sm space-y-2">
+                        <li>✅ Toegang tot het festival beide dagen</li>
+                        <li>✅ Speciale areas en gratis merchandise</li>
+                        <li>❌ Geen camping inbegrepen</li>
+                    </ul>
+                </div>
+                <div class="ticket bg-[#1f2833] p-8 rounded-2xl shadow-xl transform hover:scale-105 transition duration-300 border-2 border-[#66fcf1]">
+                    <h3 class="text-2xl font-bold text-[#66fcf1] mb-4">VIP Ticket</h3>
+                    <p class="text-lg font-semibold mb-2">Prijs: €200</p>
+                    <ul class="text-left text-sm space-y-2">
+                        <li>✅ Toegang tot VIP-area, beide dagen</li>
+                        <li>✅ Gratis drankjes en VIP-lounges</li>
+                        <li>✅ Meet & greet met artiesten</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-container bg-[#1f2833] p-8 rounded-3xl shadow-2xl mt-12 max-w-lg mx-auto">
+                <form id="ticket-form" class="space-y-6">
+                    <input type="text" name="naam" placeholder="Volledige naam" required
+                           class="w-full px-4 py-3 rounded-lg bg-[#0b0c10] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ff4e50]">
+                    <input type="email" name="email" placeholder="E-mail" required
+                           class="w-full px-4 py-3 rounded-lg bg-[#0b0c10] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ff4e50]">
+                    <input type="tel" name="telefoon" placeholder="Telefoonnummer" required
+                           class="w-full px-4 py-3 rounded-lg bg-[#0b0c10] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ff4e50]">
+                    <select name="ticket" required class="w-full px-4 py-3 rounded-lg bg-[#0b0c10] text-white focus:outline-none focus:ring-2 focus:ring-[#ff4e50]">
+                        <option value="">Kies tickettype</option>
+                        <option value="dagticket">Dagticket (€50)</option>
+                        <option value="weekendpass">Weekendpass (€120)</option>
+                        <option value="vip">VIP Ticket (€200)</option>
+                    </select>
+                    <input type="number" name="aantal" placeholder="Aantal tickets" min="1" max="10" required
+                           class="w-full px-4 py-3 rounded-lg bg-[#0b0c10] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ff4e50]">
+                    <textarea name="opmerkingen" placeholder="Eventuele opmerkingen" rows="4"
+                              class="w-full px-4 py-3 rounded-lg bg-[#0b0c10] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ff4e50]"></textarea>
+                    <label class="flex items-center text-sm text-gray-400">
+                        <input type="checkbox" name="leeftijd" required class="mr-2 rounded-md"> Ik ben 18 jaar of ouder
+                    </label>
+                    <button type="submit" class="w-full bg-[#ff4e50] text-white font-bold py-4 rounded-full shadow-lg hover:bg-[#f9d423] transition duration-300 transform hover:scale-105">
+                        Reserveer Ticket
+                    </button>
+                    <div id="form-message" class="mt-4 text-center hidden"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Festival Info Sectie -->
+        <section id="info" class="py-20 px-6 text-center bg-[#1f2833] shadow-inner">
+            <h2 class="text-4xl font-bold text-[#f9d423] mb-8">Festival Info</h2>
+            <div class="info-details max-w-2xl mx-auto space-y-4 text-left">
+                <p><strong>Datum:</strong> 22-23 juli 2028</p>
+                <p><strong>Locatie:</strong> Strand van Oostende</p>
+                <p><strong>Openingstijden:</strong> 12:00 - 02:00</p>
+                <p><strong>Leeftijd:</strong> 18 jaar en ouder</p>
+                <p class="mt-8 text-center text-white opacity-70">
+                    Bekijk de locatie op de kaart
+                </p>
+                <div class="map-container rounded-xl overflow-hidden shadow-2xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d251.57168629728466!2d2.9193224!3d51.2348259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dca910f1a9f313%3A0x2fa270b12bab08cf!2sSolanya!5e0!3m2!1snl!2sbe!4v1693675000000!5m2!1snl!2sbe" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Sectie -->
+        <section id="faq" class="py-20 px-6">
+            <h2 class="text-4xl font-bold text-[#ff4e50] text-center mb-8">Veelgestelde vragen</h2>
+            <div class="faq max-w-3xl mx-auto space-y-4">
+                <div class="bg-[#1f2833] p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold cursor-pointer flex justify-between items-center text-[#e0eaf4]">
+                        Waar kan ik mijn tickets ophalen?
+                        <span class="faq-icon text-2xl">+</span>
+                    </h3>
+                    <p class="faq-answer mt-2 hidden text-white opacity-70">Tickets kunnen worden opgehaald bij de ingang van het festivalterrein. Zorg dat je je reserveringsbevestiging en een geldig identiteitsbewijs bij je hebt.</p>
+                </div>
+                <div class="bg-[#1f2833] p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold cursor-pointer flex justify-between items-center text-[#e0eaf4]">
+                        Is er een parkeergelegenheid?
+                        <span class="faq-icon text-2xl">+</span>
+                    </h3>
+                    <p class="faq-answer mt-2 hidden text-white opacity-70">Ja, er is beperkte parkeergelegenheid beschikbaar. We raden aan om met het openbaar vervoer te komen of een carpool-plek te reserveren via onze website.</p>
+                </div>
+                <div class="bg-[#1f2833] p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold cursor-pointer flex justify-between items-center text-[#e0eaf4]">
+                        Mag ik mijn eigen eten en drinken meenemen?
+                        <span class="faq-icon text-2xl">+</span>
+                    </h3>
+                    <p class="faq-answer mt-2 hidden text-white opacity-70">Nee, het meenemen van eigen consumpties is niet toegestaan. Er zijn diverse eet- en drinkgelegenheden op het festivalterrein.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Sectie -->
+        <section id="sponsors" class="py-20 px-6 text-center bg-[#1f2833] shadow-inner">
+            <h2 class="text-4xl font-bold text-[#66fcf1] mb-8">Onze Sponsors</h2>
+            <p class="mb-12 text-white opacity-70">
+                Solanya Festival wordt mede mogelijk gemaakt door onze fantastische sponsors!
+            </p>
+            <div class="sponsors-container flex flex-wrap justify-center gap-8">
+                <!-- Sponsor logos kunnen hier worden toegevoegd -->
+                <div class="sponsor bg-[#0b0c10] p-6 rounded-xl shadow-lg">
+                    <img src="https://placehold.co/150x80/66fcf1/0b0c10?text=Sponsor+1" alt="Sponsor logo 1" class="rounded-lg w-full">
+                </div>
+                <div class="sponsor bg-[#0b0c10] p-6 rounded-xl shadow-lg">
+                    <img src="https://placehold.co/150x80/ff4e50/0b0c10?text=Sponsor+2" alt="Sponsor logo 2" class="rounded-lg w-full">
+                </div>
+                <div class="sponsor bg-[#0b0c10] p-6 rounded-xl shadow-lg">
+                    <img src="https://placehold.co/150x80/f9d423/0b0c10?text=Sponsor+3" alt="Sponsor logo 3" class="rounded-lg w-full">
+                </div>
+            </div>
+            <p class="mt-12 text-lg text-white opacity-70">
+                Wil je ook sponsor worden? Stuur een mail naar <a href="mailto:solanya.festival@gmail.com" class="text-[#ff4e50] hover:underline">solanya.festival@gmail.com</a>
+            </p>
+        </section>
+
+        <!-- Contact Sectie -->
+        <section id="contact" class="py-20 px-6 text-center">
+            <h2 class="text-4xl font-bold text-[#ff4e50] mb-8">Contact</h2>
+            <div class="social-links flex justify-center space-x-6 text-2xl">
+                <a href="https://www.instagram.com/solanya.festival/" target="_blank" class="hover:text-[#f9d423] transition-colors duration-300">Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=61579190325206" target="_blank" class="hover:text-[#f9d423] transition-colors duration-300">Facebook</a>
+                <a href="mailto:solanya.festival@gmail.com" class="hover:text-[#f9d423] transition-colors duration-300">Email</a>
+                <a href="https://wa.me/0488612860" target="_blank" class="hover:text-[#f9d423] transition-colors duration-300">WhatsApp</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Voettekst -->
+    <footer class="bg-[#0b0c10] text-center py-6 mt-12 shadow-inner">
+        <p>&copy; 2025 Solanya Festival - Alle rechten voorbehouden</p>
+    </footer>
+
+    <!-- JavaScript voor functies -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Countdown-timer
+            const countdown = document.getElementById('countdown');
+            const festivalDate = new Date("July 22, 2028 12:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = festivalDate - now;
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                countdown.innerHTML = `${days}d ${hours}u ${minutes}m ${seconds}s`;
+            }, 1000);
+
+            // FAQ-toggle
+            document.querySelectorAll('.faq h3').forEach(item => {
+                item.addEventListener('click', () => {
+                    const answer = item.nextElementSibling;
+                    const icon = item.querySelector('.faq-icon');
+                    answer.classList.toggle('hidden');
+                    if (answer.classList.contains('hidden')) {
+                        icon.textContent = '+';
+                    } else {
+                        icon.textContent = '-';
+                    }
+                });
+            });
+
+            // Mobiel menu
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuLinks = mobileMenu.querySelectorAll('a');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Formulierafhandeling
+            const form = document.getElementById('ticket-form');
+            const formMessage = document.getElementById('form-message');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                formMessage.classList.remove('hidden', 'text-green-500', 'text-red-500');
+                formMessage.textContent = 'Bericht succesvol verstuurd!';
+                formMessage.classList.add('text-green-500');
+                form.reset();
+            });
+
+            // Sterren en glows genereren
+            function createFloatingObjects() {
+                const createStar = () => {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.top = `${Math.random() * 100}vh`;
+                    star.style.left = `${Math.random() * 100}vw`;
+                    document.body.appendChild(star);
+                };
+
+                const createGlow = () => {
+                    const glow = document.createElement('div');
+                    glow.className = 'magic-glow';
+                    glow.style.top = `${Math.random() * 100}vh`;
+                    glow.style.left = `${Math.random() * 100}vw`;
+                    glow.style.animationDuration = `${4 + Math.random() * 4}s`;
+                    document.body.appendChild(glow);
+                };
+
+                for (let i = 0; i < 100; i++) createStar();
+                for (let i = 0; i < 20; i++) createGlow();
+            }
+
+            createFloatingObjects();
+        });
+    </script>
+</body>
+</html>
